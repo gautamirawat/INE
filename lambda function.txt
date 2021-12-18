@@ -1,0 +1,21 @@
+import json
+import boto3
+
+def lambda_handler(event, context):
+    dynamodb = boto3.resource('dynamodb')
+    #table = dynamodb.Table('customerlist')
+    #customerlist=table.scan()['Items']
+    print(customerlist)
+    name=event['name']
+    # TODO implement
+    try:
+        response = table.get_item(Key={'First Name': name, 'Last Name': name})
+    except ClientError as e:
+        print(e.response['Error']['Message'])
+    else:
+        customerlist=table.scan()['Items']
+        print(customerlist)
+   
+        
+    
+   

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Task2</title>
+<script>
+var callAPI = (name)=>{
+var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+var raw = JSON.stringify({"firstName":name,"lastName":name});
+var requestOptions = {
+method: 'POST',
+headers: myHeaders,
+body: raw,
+redirect: 'follow'
+};
+fetch("https://3m2wqece5g.execute-api.us-east-1.amazonaws.com/dev", requestOptions)
+.then(response => response.text())
+.then(result => alert(JSON.parse(result).body))
+.catch(error => console.log('error', error));
+}
+</script>
+</head>
+<body>
+<h1>Search Customers</h1>
+<p>
+<form action="/action_page.php">
+<label for="name">First Name OR Last Name:</label><br><br>
+<input type="text" id="name" name="name"><br><br>
+<input type="submit" value="Submit">
+</form>
+</p>
+</body>
+</html>
+
+
